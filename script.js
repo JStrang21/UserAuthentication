@@ -79,7 +79,7 @@ async function hashPassword(password) {
 createUser(tempUsername, tempPassword);
 createUser(tempUserTwo, tempPassTwo);
 
-checkCredentials(tempUsername, tempPassword)
+checkCredentials(tempUserTwo, tempPassTwo)
 .then((result) => {
     console.log(result)
 })
