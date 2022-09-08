@@ -8,7 +8,7 @@ loginButton.addEventListener("click", (e) => {
     e.preventDefault();
 })*/
 
-let tempDataBase = [
+/*let tempDataBase = [
     {
         username: 'Justin100',
         password: 'qwerty123',
@@ -21,12 +21,17 @@ let tempDataBase = [
         username: 'gangstaKilla420',
         password: 'word53ukl',
     }
-]
+]*/
 
 //Checks credentials against the user database
-function checkCredentials(username, password) {
-    for (let i in tempDataBase) {
-        if ((tempDataBase[i].username === username) && (tempDataBase[i].password === password)) {
+async function checkCredentials(username, password) {
+    await hashPassword(password)
+    .then((hashedPassword) => {
+        return password = hashedPassword;
+    })
+    
+    for (let i in dataBase) {
+        if ((dataBase[i].username === username) && (dataBase[i].password === password)) {
             //Valid credentials
             return true
         }
@@ -37,20 +42,21 @@ function checkCredentials(username, password) {
 
 let tempUsername = 'gangstaKilla420';
 let tempPassword = 'word53ukl';
+let tempUserTwo = 'Justin100';
+let tempPassTwo = 'qwerty123';
+let dataBase = [];
 
-let userOne = {
-    
-}
+function createUser(username, password) {
+    let newUser = {};
 
-function createUser(username, password, newUser) {
     newUser.username = username;
 
     hashPassword(password)
     .then((hashedPassword) => {
         return newUser.password = hashedPassword;
     })
-
-    return newUser
+    dataBase.push(newUser);
+    return dataBase
 }
 
 //Hash using SubtleCrypto.digest() (https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest)
@@ -70,7 +76,11 @@ async function hashPassword(password) {
     return hexString
 }
 
-createUser(tempUsername, tempPassword, userOne);
-console.log(userOne)
+createUser(tempUsername, tempPassword);
+createUser(tempUserTwo, tempPassTwo);
 
-//console.log(checkCredentials(tempUsername, tempPassword));
+checkCredentials(tempUsername, tempPassword)
+.then((result) => {
+    console.log(result)
+})
+
