@@ -38,8 +38,18 @@ function checkCredentials(username, password) {
     return false
 }
 
-function createUser(username, password) {
+let userOne = {
+    username,
+    password,
+}
 
+function createUser(username, password) {
+    newUser.username = username;
+    newUser.password = hashPassword(password);
+}
+
+function hashPassword(password) {
+    
 }
 
 //console.log(checkCredentials(tempUsername, tempPassword));
