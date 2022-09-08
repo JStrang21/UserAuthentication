@@ -1,5 +1,5 @@
-import dataBase from './userCredentials.json' assert {type: 'json'};
-
+//import dataBase from './userCredentials.json' assert {type: 'json'};
+import fs from 'fs';
 /*const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login");
@@ -42,7 +42,13 @@ async function createUser(username, password) {
     .then((hashedPassword) => {
         newUser.password = hashedPassword;
     })
-    dataBase.push(newUser);
+    //dataBase.push(newUser);
+    let json = JSON.stringify(newUser);
+    fs.writeFile('userCredentials.json', json, (err) => {
+        if (err) {
+            throw err
+        }
+    })
     return dataBase
 }
 
