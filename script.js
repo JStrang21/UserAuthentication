@@ -7,9 +7,7 @@ const createUserButton = document.getElementById("createUser");
 loginButton.addEventListener("click", (e) => {
     e.preventDefault();
 })*/
-
-let tempUsername = 'gangstaKilla420';
-let tempPassword = 'word53ukl';
+const crypto = require('crypto');
 
 let tempDataBase = [
     {
@@ -38,18 +36,29 @@ function checkCredentials(username, password) {
     return false
 }
 
+let tempUsername = 'gangstaKilla420';
+let tempPassword = 'word53ukl';
+
 let userOne = {
-    username,
-    password,
+    
 }
 
-function createUser(username, password) {
+function createUser(username, password, newUser) {
     newUser.username = username;
     newUser.password = hashPassword(password);
 }
 
-function hashPassword(password) {
-    
+//Hash using SubtleCrypto.digest() (https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest)
+async function hashPassword(password) {
+    //Encode password
+    const encodedPassword = new TextEncoder('utf-8').encode(password);
+    //Hash the encoded password
+    const hash = await crypto.subtle.digest('SHA-256', encodedPassword);
+    console.log(hash);
 }
+
+hashPassword('Hello')
+
+createUser(tempUsername, tempPassword, userOne);
 
 //console.log(checkCredentials(tempUsername, tempPassword));
