@@ -27,6 +27,7 @@ loginButton.addEventListener("click", (e) => {
 async function checkCredentials(username, password) {
     await hashPassword(password)
     .then((hashedPassword) => {
+        console.log(hashedPassword)
         return password = hashedPassword;
     })
     
@@ -76,11 +77,12 @@ async function hashPassword(password) {
     return hexString
 }
 
-createUser(tempUsername, tempPassword);
+createUser(tempUsername, tempUsername);
 createUser(tempUserTwo, tempPassTwo);
 
-checkCredentials(tempUserTwo, tempPassTwo)
+checkCredentials(tempUsername, tempUsername)
 .then((result) => {
     console.log(result)
 })
 
+export {checkCredentials, hashPassword}
