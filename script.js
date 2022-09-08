@@ -51,18 +51,15 @@ function createUser(username, password, newUser) {
 async function hashPassword(password) {
     //Converts char's into an array of Ascii codes
     const encodedPassword = new TextEncoder().encode(password);
-    //Takes array of ascii bytes as input and hashs the data into a hashed byte array
+    //Takes array of ascii bytes as input, hashs the data, and outputs a hashed byte array
     const hashBuffer = await crypto.subtle.digest('SHA-256', encodedPassword);
-    //Converts hashBuffer into array of hashed bytes
+    //Converts hashed byte array into Uint8 byte array
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     //Converts array of hashed bytes into hex string
     const hexString = hashArray.map(byte => 0 + byte.toString(16).padStart(2, '0')).join('');
-    console.log(hexString)
+    
+    return hexString
 }
-
-hashPassword('Hello');
-
-
 
 //createUser(tempUsername, tempPassword, userOne);
 
