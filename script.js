@@ -8,21 +8,6 @@ loginButton.addEventListener("click", (e) => {
     e.preventDefault();
 })*/
 
-/*let tempDataBase = [
-    {
-        username: 'Justin100',
-        password: 'qwerty123',
-    },
-    {
-        username: 'birdDog420',
-        password: '123456789',
-    },
-    {
-        username: 'gangstaKilla420',
-        password: 'word53ukl',
-    }
-]*/
-
 //Checks credentials against the user database
 async function checkCredentials(username, password) {
     await hashPassword(password)
@@ -85,4 +70,4 @@ checkCredentials(tempUsername, tempUsername)
     console.log(result)
 })
 
-export {checkCredentials, hashPassword}
+//export {checkCredentials, hashPassword}
