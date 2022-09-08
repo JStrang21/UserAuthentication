@@ -1,3 +1,5 @@
+import dataBase from './userCredentials.json' assert {type: 'json'};
+
 /*const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login");
@@ -12,7 +14,6 @@ loginButton.addEventListener("click", (e) => {
 async function checkCredentials(username, password) {
     await hashPassword(password)
     .then((hashedPassword) => {
-        console.log(hashedPassword)
         return password = hashedPassword;
     })
     
@@ -30,7 +31,6 @@ let tempUsername = 'gangstaKilla420';
 let tempPassword = 'word53ukl';
 let tempUserTwo = 'Justin100';
 let tempPassTwo = 'qwerty123';
-let dataBase = [];
 
 function createUser(username, password) {
     let newUser = {};
@@ -69,5 +69,7 @@ checkCredentials(tempUsername, tempUsername)
 .then((result) => {
     console.log(result)
 })
+
+console.log(dataBase[0])
 
 //export {checkCredentials, hashPassword}
