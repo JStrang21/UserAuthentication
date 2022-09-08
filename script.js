@@ -32,14 +32,15 @@ let tempPassword = 'word53ukl';
 let tempUserTwo = 'Justin100';
 let tempPassTwo = 'qwerty123';
 
-function createUser(username, password) {
+async function createUser(username, password) {
     let newUser = {};
 
     newUser.username = username;
+    newUser.password;
 
-    hashPassword(password)
+    await hashPassword(password)
     .then((hashedPassword) => {
-        return newUser.password = hashedPassword;
+        newUser.password = hashedPassword;
     })
     dataBase.push(newUser);
     return dataBase
@@ -62,14 +63,16 @@ async function hashPassword(password) {
     return hexString
 }
 
-createUser(tempUsername, tempUsername);
-createUser(tempUserTwo, tempPassTwo);
-
-checkCredentials(tempUsername, tempUsername)
-.then((result) => {
-    console.log(result)
+createUser(tempUsername, tempPassword);
+createUser(tempUserTwo, tempPassTwo)
+.then(() => {
+    
 })
 
-console.log(dataBase[0])
+/*checkCredentials(tempUsername, tempPassword)
+.then((result) => {
+    console.log(result)
+})*/
+
 
 //export {checkCredentials, hashPassword}
