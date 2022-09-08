@@ -1,14 +1,15 @@
 /*const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
-const submitButton = document.querySelector("button");
+const loginButton = document.getElementById("login");
+const createUserButton = document.getElementById("createUser");
 
 
-submitButton.addEventListener("click", (e) => {
+loginButton.addEventListener("click", (e) => {
     e.preventDefault();
 })*/
 
-let tempUsername = 'Justin100';
-let tempPassword = 'qwerty123';
+let tempUsername = 'gangstaKilla420';
+let tempPassword = 'word53ukl';
 
 let tempDataBase = [
     {
@@ -25,16 +26,20 @@ let tempDataBase = [
     }
 ]
 
+//Checks credentials against the user database
 function checkCredentials(username, password) {
     for (let i in tempDataBase) {
         if ((tempDataBase[i].username === username) && (tempDataBase[i].password === password)) {
+            //Valid credentials
             return true
         }
-        else {
-            //Username or password is incorrect
-            return false
-        }
     }
+    //Invalid credentials
+    return false
 }
 
-checkCredentials(tempUsername, tempPassword);
+function createUser(username, password) {
+
+}
+
+//console.log(checkCredentials(tempUsername, tempPassword));
