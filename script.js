@@ -49,15 +49,21 @@ function createUser(username, password, newUser) {
 
 //Hash using SubtleCrypto.digest() (https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest)
 async function hashPassword(password) {
-    //Encode password
-    const encodedPassword = new TextEncoder('utf-8').encode(password);
-    //Hash the encoded password
-    const hash = await crypto.subtle.digest('SHA-256', encodedPassword);
-    console.log(hash);
+    //Converts char's into an array of Ascii codes
+    const encodedPassword = new TextEncoder().encode(password);
+    //Takes array of ascii bytes as input and hashs the data into a hashed byte array
+    const hashBuffer = await crypto.subtle.digest('SHA-256', encodedPassword);
+    //Converts hashBuffer into array of hashed bytes
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    //Converts array of hashed bytes into hex string
+    const hexString = hashArray.map(byte => 0 + byte.toString(16).padStart(2, '0')).join('');
+    console.log(hexString)
 }
 
-hashPassword('Hello')
+hashPassword('Hello');
 
-createUser(tempUsername, tempPassword, userOne);
+
+
+//createUser(tempUsername, tempPassword, userOne);
 
 //console.log(checkCredentials(tempUsername, tempPassword));
