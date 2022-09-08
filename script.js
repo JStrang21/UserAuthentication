@@ -7,7 +7,6 @@ const createUserButton = document.getElementById("createUser");
 loginButton.addEventListener("click", (e) => {
     e.preventDefault();
 })*/
-const crypto = require('crypto');
 
 let tempDataBase = [
     {
