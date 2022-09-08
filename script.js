@@ -44,7 +44,12 @@ let userOne = {
 
 function createUser(username, password, newUser) {
     newUser.username = username;
-    newUser.password = hashPassword(password);
+    hashPassword(password)
+    .then((hashedPassword) => {
+        console.log(hashedPassword)
+        newUser.password = hashedPassword;
+    })
+    return newUser
 }
 
 //Hash using SubtleCrypto.digest() (https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest)
@@ -57,10 +62,10 @@ async function hashPassword(password) {
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     //Converts array of hashed bytes into hex string
     const hexString = hashArray.map(byte => 0 + byte.toString(16).padStart(2, '0')).join('');
-    
     return hexString
 }
 
-//createUser(tempUsername, tempPassword, userOne);
+createUser(tempUsername, tempPassword, userOne);
+
 
 //console.log(checkCredentials(tempUsername, tempPassword));
