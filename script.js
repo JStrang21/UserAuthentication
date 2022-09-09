@@ -33,6 +33,7 @@ let tempPassword = 'word53ukl';
 let tempUserTwo = 'Justin100';
 let tempPassTwo = 'qwerty123';
 let dataBase = [];
+
 async function createUser(username, password) {
     let newUser = {};
 
@@ -76,10 +77,10 @@ createUser(tempUserTwo, tempPassTwo)
     console.log(dataBase[0].password)
 })
 
-/*checkCredentials(tempUsername, tempPassword)
+checkCredentials(tempUsername, tempPassword)
 .then((result) => {
     console.log(result)
-})*/
+})
 
 
 //export {checkCredentials, hashPassword}
