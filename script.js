@@ -1,5 +1,6 @@
-/*import dataBase from './userCredentials.json' assert {type: 'json'};
-import fs from 'fs';*/
+/*const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database(':memory:');*/
+
 /*const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login");
