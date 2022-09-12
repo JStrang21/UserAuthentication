@@ -1,6 +1,3 @@
-/*const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(':memory:');*/
-
 /*const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login");
@@ -44,13 +41,10 @@ async function createUser(username, password) {
     .then((hashedPassword) => {
         newUser.password = hashedPassword;
     })
+    //Need to send info to database file
+    //Send info and automatically query it into database
     dataBase.push(newUser);
-    /*let json = JSON.stringify(newUser);
-    fs.writeFile('userCredentials.json', json, (err) => {
-        if (err) {
-            throw err
-        }
-    })*/
+    
     return dataBase
 }
 
@@ -73,12 +67,10 @@ async function hashPassword(password) {
 
 createUser(tempUsername, tempPassword);
 createUser(tempUserTwo, tempPassTwo)
-.then(() => {
-    console.log(dataBase[0].password)
-})
 
 checkCredentials(tempUsername, tempPassword)
 .then((result) => {
+    //Retrieve user creds from database and compare to login attempt
     console.log(result)
 })
 

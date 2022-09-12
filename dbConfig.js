@@ -11,7 +11,7 @@ con.connect((err) => {
     if (err) {
         throw err
     }
-    let sql = "DELETE FROM users WHERE username = 'John'";
+    /*let sql = "DELETE FROM users WHERE username = 'John'";
     con.query(sql, (err) => {
         if (err) {
             throw err
@@ -24,6 +24,6 @@ con.connect((err) => {
             throw err
         }
         console.log(result);
-    })
+    })*/
 })
 
